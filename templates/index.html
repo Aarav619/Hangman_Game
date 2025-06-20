@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+
+
+  <style>
+    body {
+      background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: sans-serif;
+      text-align: center;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    #word {
+      font-size: 2rem;
+      letter-spacing: 10px;
+      margin: 20px auto;
+    }
+
+    #hangman {
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 1.2rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      margin: 20px auto;
+      border-radius: 10px;
+      width: fit-content;
+    }
+
+    input, button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+
+    #result {
+      font-size: 1.5rem;
+      margin-top: 15px;
+    }
+
+    #used-letters {
+      margin-top: 20px;
+    }
+
+    #guessed {
+      font-size: 1.2rem;
+      color: yellow;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      #word {
+        font-size: 1.5rem;
+        letter-spacing: 8px;
+      }
+      button, input {
+        font-size: 1rem;
+        padding: 8px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Hangman Game</h1>
+
+  <div id="word">Loading...</div>
+
+  <input type="text" id="letter" maxlength="1" placeholder="Enter a letter" />
+  <button onclick="guess()">Guess</button>
+  <button onclick="restart()">Restart Game</button>
+
+  <p id="result"></p>
+  <div id="hangman"></div>
+
+  <div id="used-letters">
+    <strong>Guessed Letters:</strong>
+    <p id="guessed"></p>
+  </div>
+
+  <!-- Sound Effects -->
+  <audio id="click-sound" src="/static/audio/click.mp3"></audio>
+  <audio id="win-sound" src="/static/audio/win.mp3"></audio>
+  <audio id="lose-sound" src="/static/audio/lose.mp3"></audio>
+  <audio id="died-sound" src="/static/audio/died.mp3"></audio>
+
+  <script>
+    const stages = [
+`  _______
+ |       |
+ |       O
+ |      /|\\
+ |      / \\
+ |
+_|_
+
+=============`,
+`  _______
+ |       |
+ |       O
+ |      /|\\
+ |      / 
+ |
+_|_
+
+=============`,
+`  _______
+ |       |
+ |       O
+ |      /|\\
+ |       
+ |
+_|_
+
+=============`,
+`  _______
+ |       |
+ |       O
+ |      /|
+ |      
+ |
+_|_
+
+=============`,
+`  _______
+ |       |
+ |       O
+ |      / 
+ |       
+ |
+_|_
+
+=============`,
+`  _______
+ |       |
+ |       O
+ |      
+ |       
+ |
+_|_
+
+=============`,
+`  _______
+ |       |
+ |       
+ |      
+ |      
+ |
+_|_
+
+=============`];
+
+    let word = "";
+    let display = [];
+    let lives = 6;
+    let guessedLetters = [];
+
+    fetch('/start')
+      .then(res => res.json())
+      .then(data => {
+        word = data.word.toLowerCase();
+        display = Array(word.length).fill('_');
+        document.getElementById('word').innerText = display.join(' ');
+        document.getElementById('hangman').innerText = stages[0];
+      });
+
+    function guess() {
+      const clickSound = document.getElementById('click-sound');
+      clickSound.play();
+
+      const letterInput = document.getElementById('letter');
+      const letter = letterInput.value.toLowerCase();
+      letterInput.value = '';
+      letterInput.focus();
+
+      if (!letter || letter.length !== 1 || !/[a-z]/.test(letter)) return;
+      if (guessedLetters.includes(letter)) return;
+
+      guessedLetters.push(letter);
+      document.getElementById('guessed').innerText = guessedLetters.join(', ');
+
+      let correct = false;
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] === letter) {
+          display[i] = letter;
+          correct = true;
+        }
+      }
+
+      if (!correct) {
+        lives--;
+        document.getElementById('hangman').innerText = stages[6 - lives];
+      }
+
+      document.getElementById('word').innerText = display.join(' ');
+
+      if (!display.includes('_')) {
+        document.getElementById('result').innerText = "🎉 You Win!";
+        document.getElementById('win-sound').play();
+        alert("You Win 🎉");
+        document.getElementById('letter').disabled = true;
+      }
+
+      if (lives === 0) {
+        document.getElementById('result').innerText = `☠️ You Lose! Word was "${word}"`;
+        document.getElementById('lose-sound').play();
+        document.getElementById('died-sound').play();
+        alert("You Lost ☠️");
+        document.getElementById('letter').disabled = true;
+      }
+    }
+
+    function restart() {
+      window.location.reload();
+    }
+  </script>
+</body>
+</html>
