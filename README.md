@@ -1,12 +1,12 @@
 # Hangman Game.
 Hangman game with basic features
 
-# Table of Contents
+## Table of Contents
 
 - [Description](#description)
 - [Technology](#Technology)
-- [Installation](#usage)
-- [Usage](#license)
+- [Installation](#Installation)
+- [Usage](#usage)
 - [Questions](#question)
 
 ## Description:
@@ -31,16 +31,21 @@ To run this project, install pip :
 pip install
 
 ```
+
 ## Usage
+
 After installing pip, Run cd hangman_game, And then python hangman_game.py in your termianl:
 
-A Link will pop up in your terminal
-For locally run this web app. http://127.0.0.1:5000
+A Link will pop up, Click that for using.
+
+[Click me to see the app!]()
 
 #### Screenshot
+
 - Home Page <br>
 ![Screenshot]()
 
 ## Questions?
+
 - [Email](aaravraj619.ar@gmail.com)
 - [Github Profile]()
