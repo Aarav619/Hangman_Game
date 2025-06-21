@@ -1,8 +1,8 @@
 # Hangman Game.
-Hangman game with basic features.
+Hangman game with basic features
 
 # Table of Contents
-# Description:
+Description
 Technology.
 Installation.
 Usage.
