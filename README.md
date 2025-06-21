@@ -34,8 +34,13 @@ pip install
 
 ## Usage
 
-After installing pip, Run cd hangman_game, And then python hangman_game.py in your termianl:
+After installing pip, Run cd hangman_game, And then python hangman_game.py in your terminal:
 
+```
+
+python hangman_game.py
+
+```
 A Link will pop up, Click that for using.
 
 [Click me to see the app!]()
