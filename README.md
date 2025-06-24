@@ -1,5 +1,5 @@
 # Hangman Game.
-Hangman game with basic features
+Hangman game with basic features.
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ Hangman game with basic features
 ## Description:
 
 A web-based Hangman game built with Python (Flask), HTML, CSS, and JavaScript.  
-This project features sound effects, animations, mobile responsiveness, and is deployable online via Render.
+This project features sound effects, mobile responsiveness, and is deployable online via Render.
 
 ## Technology:
 
