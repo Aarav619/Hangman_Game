@@ -47,9 +47,14 @@ A Link will pop up, Click that for using.
 
 #### Screenshot
 
-- Home Page <br>
+- Home page <br>
+![Screenshot](https://github.com/Aarav619/Hangman_Game/blob/main/static/screenshots/home%20page.png?raw=true)
+
+- you win <br>
 ![Screenshot](https://github.com/Aarav619/Hangman_Game/blob/main/static/screenshots/you%20win.png?raw=true)
 
+- you lose <br>
+![Screenschot]()
 ## Questions?
 
 - [Email](aaravraj619.ar@gmail.com)
