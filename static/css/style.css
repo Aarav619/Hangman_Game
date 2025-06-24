@@ -1,0 +1,67 @@
+body {
+  background-image: url("/static/images/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+#word {
+  font-size: 2rem;
+  letter-spacing: 10px;
+  margin: 20px auto;
+}
+
+#hangman {
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+input, button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+#result {
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+#used-letters {
+  margin-top: 20px;
+}
+
+#guessed {
+  font-size: 1.2rem;
+  color: yellow;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  #word {
+    font-size: 1.5rem;
+    letter-spacing: 8px;
+  }
+  button, input {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+}
