@@ -54,7 +54,9 @@ A Link will pop up, Click that for using.
 ![Screenshot](https://github.com/Aarav619/Hangman_Game/blob/main/static/screenshots/you%20win.png?raw=true)
 
 - you lose <br>
-![Screenschot]()
+![Screenschot](https://github.com/Aarav619/Hangman_Game/blob/main/static/screenshots/you%20lose.png?raw=true)
+
+
 ## Questions?
 
 - [Email](aaravraj619.ar@gmail.com)
