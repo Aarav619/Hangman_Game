@@ -19,6 +19,7 @@ This project features sound effects, animations, mobile responsiveness, and is d
 Project is created with:
 
 - Python.
+- flask.
 - HTML.
 - CSS.
 - JavaScript.
