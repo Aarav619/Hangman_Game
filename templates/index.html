@@ -213,7 +213,6 @@ _|_
       if (!display.includes('_')) {
         document.getElementById('result').innerText = "🎉 You Win!";
         document.getElementById('win-sound').play();
-        #alert("You Win 🎉");
         document.getElementById('letter').disabled = true;
       }
 
@@ -221,7 +220,6 @@ _|_
         document.getElementById('result').innerText = `☠️ You Lose! Word was "${word}"`;
         document.getElementById('lose-sound').play();
         document.getElementById('died-sound').play();
-        #alert("You Lost ☠️");
         document.getElementById('letter').disabled = true;
       }
     }
